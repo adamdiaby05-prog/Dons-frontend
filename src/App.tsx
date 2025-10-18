@@ -13,6 +13,7 @@ import MontantPage from './pages/MontantPage';
 import PresentationPage from './pages/PresentationPage';
 import PaymentSuccessPage from './pages/PaymentSuccessPage';
 import PaymentCancelPage from './pages/PaymentCancelPage';
+import ApiTestPage from './pages/ApiTestPage';
 
 function App() {
   return (
@@ -65,6 +66,14 @@ function App() {
           } />
           <Route path="/payment-success" element={<PaymentSuccessPage />} />
           <Route path="/payment-cancel" element={<PaymentCancelPage />} />
+          <Route path="/api-test" element={
+            <>
+              <Header />
+              <main>
+                <ApiTestPage />
+              </main>
+            </>
+          } />
         </Routes>
       </div>
     </Router>
