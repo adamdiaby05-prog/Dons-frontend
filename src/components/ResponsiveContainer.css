@@ -1,0 +1,34 @@
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Mobile First - Téléphones */
+@media (max-width: 480px) {
+  .responsive-container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Tablettes */
+@media (min-width: 481px) and (max-width: 768px) {
+  .responsive-container {
+    padding: 0 1rem;
+  }
+}
+
+/* Ordinateurs portables */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .responsive-container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Grands écrans */
+@media (min-width: 1025px) {
+  .responsive-container {
+    padding: 0 2rem;
+  }
+}
