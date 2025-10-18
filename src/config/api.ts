@@ -1,7 +1,7 @@
 // Configuration de l'API
 export const API_CONFIG = {
   // URL de base de l'API backend
-  BASE_URL: process.env.REACT_APP_API_URL || 'https://adm.pront-ix.com',
+  BASE_URL: process.env.REACT_APP_API_URL || 'https://dons-backend-b5p0h5-ff3497-213-199-48-58.traefik.me',
   
   // Endpoints
   ENDPOINTS: {
