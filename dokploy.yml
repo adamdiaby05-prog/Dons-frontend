@@ -1,0 +1,49 @@
+# Configuration Dokploy pour Dons-frontend
+# Ce fichier configure le déploiement automatique avec Dokploy
+
+name: dons-frontend
+description: "Application React pour le système de dons ADM"
+type: docker-compose
+
+# Configuration du build
+build:
+  context: .
+  dockerfile: Dockerfile
+  args:
+    - NODE_ENV=production
+
+# Variables d'environnement
+environment:
+  NODE_ENV: production
+  REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:8001}
+  REACT_APP_BARAPAY_CLIENT_ID: ${REACT_APP_BARAPAY_CLIENT_ID:-wjb7lzQVialbcwMNTPD1IojrRzPIIl}
+
+# Configuration du réseau
+networks:
+  - dons-network
+
+# Configuration des ports
+ports:
+  - "3000:80"
+
+# Configuration de la santé
+healthcheck:
+  test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  start_period: 40s
+
+# Configuration des volumes (si nécessaire)
+volumes:
+  - nginx-logs:/var/log/nginx
+
+# Configuration des labels Traefik (si utilisé)
+labels:
+  - "traefik.enable=true"
+  - "traefik.http.routers.dons-frontend.rule=Host(`dons.local`)"
+  - "traefik.http.routers.dons-frontend.entrypoints=web"
+  - "traefik.http.services.dons-frontend.loadbalancer.server.port=80"
+
+# Configuration du redémarrage
+restart: unless-stopped
