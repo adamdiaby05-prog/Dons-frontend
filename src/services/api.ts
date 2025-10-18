@@ -1,5 +1,7 @@
 // Service API pour communiquer avec le backend DONS
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://adm.pront-ix.com';
+import { API_CONFIG, buildApiUrl } from '../config/api';
+
+const API_BASE_URL = API_CONFIG.BASE_URL;
 
 export interface Payment {
   id: number;
