@@ -16,10 +16,9 @@ RUN npm ci --only=production --silent
 # Copier le code source
 COPY . .
 
-# Créer le fichier .env.production
-RUN echo "REACT_APP_API_URL=http://localhost:8001" > .env.production && \
-    echo "REACT_APP_BARAPAY_CLIENT_ID=wjb7lzQVialbcwMNTPD1IojrRzPIIl" >> .env.production && \
-    echo "GENERATE_SOURCEMAP=false" >> .env.production
+# Utiliser les variables d'environnement de Dokploy
+# Les variables REACT_APP_* sont automatiquement injectées par Docker
+# Pas besoin de créer un fichier .env.production
 
 # Construire l'application
 RUN npm run build
